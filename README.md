@@ -1,1 +1,3 @@
-React App created with Vite to practice React Router
+React App created with Vite to practice: 
+* React Router && 
+* Context API
