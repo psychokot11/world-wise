@@ -50,8 +50,7 @@ function Map() {
               key={city.id}
             >
               <Popup>
-                <span>{city.emoji}</span>
-                <span>{city.ciityName}</span>
+                <span>{city.cityName}</span>
               </Popup>
             </Marker>
         ))}
@@ -74,6 +73,7 @@ function DetectClick() {
   useMapEvents({
     click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`)
   })
+  return null
 }
 
 export default Map
