@@ -28,6 +28,8 @@ function Form() {
   const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client"
 
   useEffect(function() {
+    if (!lat && !lng) return
+
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true)
@@ -49,12 +51,18 @@ function Form() {
     fetchCityData()
   }, [lat, lng])
 
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+
   if (isLoadingGeocoding) return <Spinner />
 
   if (geoCodingError) return <Message message={geoCodingError} />
 
+  if (!lat && !lng) return <Message message="Start by clicking on the map" />
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
