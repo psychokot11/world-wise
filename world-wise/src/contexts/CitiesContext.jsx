@@ -60,15 +60,17 @@ function CitiesProvider({ children }) {
     }, [])
 
     async function getCity(id) {
-        dispatch({ type: 'loading' })
-        try {
-          const res = await fetch(`${BASE_URL}/cities/${id}`)
-          const data = await res.json()
-          dispatch({ type: 'city/loaded', payload: data })
-        }
-        catch {
-          dispatch({ type: 'rejected', payload: 'Error getting the city' })
-        }
+      if(id === currentCity.id) return
+
+      dispatch({ type: 'loading' })
+      try {
+        const res = await fetch(`${BASE_URL}/cities/${id}`)
+        const data = await res.json()
+        dispatch({ type: 'city/loaded', payload: data })
+      }
+      catch {
+        dispatch({ type: 'rejected', payload: 'Error getting the city' })
+      }
     }
 
     async function createCity(newCity) {
