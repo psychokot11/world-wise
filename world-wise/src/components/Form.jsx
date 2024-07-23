@@ -1,6 +1,6 @@
 import { useUrlPosition } from "../hooks/useUrlPosition"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { useCities } from "../contexts/CitiesContext"
